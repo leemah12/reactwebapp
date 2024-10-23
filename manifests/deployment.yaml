@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leemah-store
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: leemah-store
+  template:
+    metadata:
+      labels:
+        app: leemah-store
+    spec:
+      containers:
+      - name: leemah-store
+        image: leemah12/leemah-store:latest
+        ports:
+        - containerPort: 80
