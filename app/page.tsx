@@ -1,9 +1,9 @@
-"use client"; 
-import { useState } from 'react'
-import { Menu, ShoppingBag, Star, Facebook, Instagram, Twitter } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+"use client"; // Add this line to indicate that this is a Client Component
+import React, { useState } from 'react'; // Combine the imports
+import { Menu, ShoppingBag, Facebook, Instagram, Twitter } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Card,
   CardContent,
@@ -11,23 +11,23 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import Image from 'next/image'
+} from "@/components/ui/card";
+import Image from 'next/image';
 
 export default function LeemahStore() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const products = [
     { name: "Elegant Dress", price: "$89.99", image: "/dress1.jpeg?height=1200&width=200" },
     { name: "Stylish Handbag", price: "$59.99", image: "/bag1.jpeg?height=1200&width=200" },
     { name: "Chic Sunglasses", price: "$29.99", image: "/store.jpeg?height=1200&width=200" },
-  ]
+  ];
 
   return (
     <div className="min-h-screen flex flex-col">
       <header className="bg-primary text-primary-foreground py-4">
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Leemah's Store</h1>
+          <h1 className="text-2xl font-bold">Leemah&apos;s Store</h1>
           <nav className="hidden md:flex space-x-4">
             <a href="#home" className="hover:underline">Home</a>
             <a href="#products" className="hover:underline">Products</a>
@@ -51,7 +51,7 @@ export default function LeemahStore() {
       <main className="flex-grow">
         <section id="home" className="bg-gray-100 py-20">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl font-bold mb-4">Welcome to Leemah's Store</h2>
+            <h2 className="text-4xl font-bold mb-4">Welcome to Leemah&apos;s Store</h2>
             <p className="text-xl mb-8">Discover the latest fashion trends and accessories</p>
             <Button size="lg">
               Shop Now
@@ -90,9 +90,9 @@ export default function LeemahStore() {
 
         <section id="about" className="bg-gray-100 py-20">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center">About Leemah's Store</h2>
+            <h2 className="text-3xl font-bold mb-8 text-center">About Leemah&apos;s Store</h2>
             <p className="text-lg text-center max-w-2xl mx-auto">
-              Leemah's Store is your one-stop destination for trendy fashion and accessories. 
+              Leemah&apos;s Store is your one-stop destination for trendy fashion and accessories. 
               We curate the best styles to help you express your unique personality. 
               Our commitment to quality and customer satisfaction sets us apart in the fashion industry.
             </p>
@@ -121,7 +121,7 @@ export default function LeemahStore() {
       <footer className="bg-primary text-primary-foreground py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p>&copy; 2023 Leemah's Store. All rights reserved.</p>
+            <p>&copy; 2023 Leemah&apos;s Store. All rights reserved.</p>
             <div className="flex space-x-4 mt-4 md:mt-0">
               <a href="#" className="hover:text-gray-300"><Facebook /></a>
               <a href="#" className="hover:text-gray-300"><Instagram /></a>
@@ -131,5 +131,5 @@ export default function LeemahStore() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
