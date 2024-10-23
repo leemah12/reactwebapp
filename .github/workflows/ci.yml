@@ -46,9 +46,9 @@ jobs:
 
       # Build the Docker image
       - name: Build Docker image
-        run: docker build -t your-dockerhub-username/react-app .
+        run: docker build -t your-dockerhub-leemah12/leemah-store .
 
       # Push the Docker image to Docker Hub
       - name: Push Docker image
-        run: docker push your-dockerhub-username/react-app
+        run: docker push your-dockerhub-leemah12/leemah-store
 
