@@ -1,101 +1,135 @@
-import Image from "next/image";
+"use client"; 
+import { useState } from 'react'
+import { Menu, ShoppingBag, Star, Facebook, Instagram, Twitter } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import Image from 'next/image'
 
-export default function Home() {
+export default function LeemahStore() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const products = [
+    { name: "Elegant Dress", price: "$89.99", image: "/dress1.jpeg?height=1200&width=200" },
+    { name: "Stylish Handbag", price: "$59.99", image: "/bag1.jpeg?height=1200&width=200" },
+    { name: "Chic Sunglasses", price: "$29.99", image: "/store.jpeg?height=1200&width=200" },
+  ]
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen flex flex-col">
+      <header className="bg-primary text-primary-foreground py-4">
+        <div className="container mx-auto px-4 flex justify-between items-center">
+          <h1 className="text-2xl font-bold">Leemah's Store</h1>
+          <nav className="hidden md:flex space-x-4">
+            <a href="#home" className="hover:underline">Home</a>
+            <a href="#products" className="hover:underline">Products</a>
+            <a href="#about" className="hover:underline">About</a>
+            <a href="#contact" className="hover:underline">Contact</a>
+          </nav>
+          <Button variant="ghost" className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            <Menu />
+          </Button>
         </div>
+        {mobileMenuOpen && (
+          <nav className="md:hidden mt-2 px-4 py-2 bg-primary-foreground text-primary">
+            <a href="#home" className="block py-2">Home</a>
+            <a href="#products" className="block py-2">Products</a>
+            <a href="#about" className="block py-2">About</a>
+            <a href="#contact" className="block py-2">Contact</a>
+          </nav>
+        )}
+      </header>
+
+      <main className="flex-grow">
+        <section id="home" className="bg-gray-100 py-20">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-4xl font-bold mb-4">Welcome to Leemah's Store</h2>
+            <p className="text-xl mb-8">Discover the latest fashion trends and accessories</p>
+            <Button size="lg">
+              Shop Now
+              <ShoppingBag className="ml-2" />
+            </Button>
+          </div>
+        </section>
+
+        <section id="products" className="py-20">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-8 text-center">Featured Products</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {products.map((product, index) => (
+                <Card key={index}>
+                  <CardHeader>
+                    <CardTitle>{product.name}</CardTitle>
+                    <CardDescription>{product.price}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Image 
+                      src={product.image} 
+                      alt={product.name} 
+                      width={200} 
+                      height={200} 
+                      className="w-full h-48 object-cover"
+                    />
+                  </CardContent>
+                  <CardFooter>
+                    <Button className="w-full">Add to Cart</Button>
+                  </CardFooter>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="about" className="bg-gray-100 py-20">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-8 text-center">About Leemah's Store</h2>
+            <p className="text-lg text-center max-w-2xl mx-auto">
+              Leemah's Store is your one-stop destination for trendy fashion and accessories. 
+              We curate the best styles to help you express your unique personality. 
+              Our commitment to quality and customer satisfaction sets us apart in the fashion industry.
+            </p>
+          </div>
+        </section>
+
+        <section id="contact" className="py-20">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-8 text-center">Contact Us</h2>
+            <form className="max-w-md mx-auto">
+              <div className="mb-4">
+                <Input type="text" placeholder="Your Name" />
+              </div>
+              <div className="mb-4">
+                <Input type="email" placeholder="Your Email" />
+              </div>
+              <div className="mb-4">
+                <Textarea placeholder="Your Message" />
+              </div>
+              <Button type="submit" className="w-full">Send Message</Button>
+            </form>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      <footer className="bg-primary text-primary-foreground py-8">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p>&copy; 2023 Leemah's Store. All rights reserved.</p>
+            <div className="flex space-x-4 mt-4 md:mt-0">
+              <a href="#" className="hover:text-gray-300"><Facebook /></a>
+              <a href="#" className="hover:text-gray-300"><Instagram /></a>
+              <a href="#" className="hover:text-gray-300"><Twitter /></a>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
-  );
+  )
 }
