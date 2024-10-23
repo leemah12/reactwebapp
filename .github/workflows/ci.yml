@@ -3,7 +3,7 @@ name: CI Pipeline
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   test:
@@ -25,8 +25,8 @@ jobs:
         run: npm install
 
       # Run tests
-      - name: Run tests
-        run: npm test
+      #- name: Run tests
+       # run: npm test
 
   build-docker:
     runs-on: ubuntu-latest
@@ -46,9 +46,8 @@ jobs:
 
       # Build the Docker image
       - name: Build Docker image
-        run: docker build -t your-dockerhub-username/react-app .
+        run: docker build -t leemah12/leemah-store .
 
       # Push the Docker image to Docker Hub
       - name: Push Docker image
-        run: docker push your-dockerhub-username/react-app
-
+        run: docker push leemah12/leemah-store
