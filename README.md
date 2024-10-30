@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Leemah Store
 
-## Getting Started
+Leemah Store is an e-commerce web application built to provide a seamless online shopping experience. This project utilizes modern containerization and CI/CD practices, including Docker and GitHub Actions, with deployment on Kubernetes via Argo CD.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Overview](#overview)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running the Application](#running-the-application)
+- [CI/CD Pipeline](#cicd-pipeline)
+  - [Docker Setup](#docker-setup)
+  - [GitHub Actions Workflow](#github-actions-workflow)
+- [Kubernetes Deployment](#kubernetes-deployment)
+- [Argo CD Configuration](#argo-cd-configuration)
+- [Contributing](#contributing)
+- [License](#license)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Leemah Store is a containerized application designed for scalability, maintainability, and ease of deployment. The application is pushed to GitHub, where it is tested, built, and automatically deployed to Docker Hub. It is then deployed on a Kubernetes cluster with continuous deployment managed by Argo CD.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features
 
-## Learn More
+- **User-Friendly Interface:** Easy navigation and intuitive design.
+- **Containerization:** Dockerized for quick and isolated deployment.
+- **CI/CD Integration:** Automated workflows using GitHub Actions.
+- **Kubernetes Deployment:** Managed by Argo CD for seamless updates.
+- **Scalability:** Deployable on cloud or on-premise Kubernetes clusters.
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```plaintext
+leemah-store/
+├── src/                # Application source code
+├── Dockerfile          # Docker image configuration
+├── .github/
+│   └── workflows/      # CI/CD workflows with GitHub Actions
+├── k8s/                # Kubernetes manifest files
+└── README.md           # Project documentation
